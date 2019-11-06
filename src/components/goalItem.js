@@ -4,8 +4,8 @@ import { FlatList, Text, View } from "react-native";
 const GoalItem = ({ data }) => {
   return (
     //  <View>
-    //     {goals.map((goal, index) => (
-    //       <Text key={index}> {goal}</Text>
+    //     {data.map((datum, index) => (
+    //       <Text key={index}> {datum}</Text>
     //     ))}
     //   </View>
 
