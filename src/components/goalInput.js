@@ -14,8 +14,14 @@ const GoalInput = () => {
     setGoal(() => [...goals, newGoal]);
     setNewGoal("");
   };
+
+  const handleDelete = toBeDeletedGoal => {
+    const goalsAfterDeletion = goals.filter(goal => goal !== toBeDeletedGoal);
+    setGoal(goalsAfterDeletion);
+  };
+
   return (
-    <>
+    <React.Fragment>
       <View style={styles.container}>
         <TextInput
           style={styles.textInput}
@@ -26,8 +32,8 @@ const GoalInput = () => {
         <Button title="Press" onPress={handleAddGoal} />
       </View>
 
-      <GoalItem data={goals} />
-    </>
+      <GoalItem data={goals} onDelete={handleDelete} />
+    </React.Fragment>
   );
 };
 export default GoalInput;
