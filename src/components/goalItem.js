@@ -1,7 +1,13 @@
 import React, { useState } from "react";
-import { FlatList, Text, View, StyleSheet } from "react-native";
+import {
+  TouchableOpacity,
+  FlatList,
+  Text,
+  View,
+  StyleSheet
+} from "react-native";
 
-const GoalItem = ({ data }) => {
+const GoalItem = ({ data, onDelete }) => {
   return (
     //  <View>
     //     {data.map((datum, index) => (
@@ -13,9 +19,11 @@ const GoalItem = ({ data }) => {
       keyExtractor={(item, index) => item}
       data={data}
       renderItem={itemData => (
-        <View style={styles.listItem}>
-          <Text> {itemData.item}</Text>
-        </View>
+        <TouchableOpacity onPress={() => onDelete(itemData.item)}>
+          <View style={styles.listItem}>
+            <Text> {itemData.item}</Text>
+          </View>
+        </TouchableOpacity>
       )}
     />
   );
