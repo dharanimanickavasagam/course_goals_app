@@ -1,38 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, View, TextInput, Button } from "react-native";
-import GoalItem from "./goalItem";
 
-const GoalInput = () => {
-  const [newGoal, setNewGoal] = React.useState("");
-  const [goals, setGoal] = useState([]);
-
-  const handleInputText = ev => {
-    setNewGoal(ev);
-  };
-
-  const handleAddGoal = () => {
-    setGoal(() => [...goals, newGoal]);
-    setNewGoal("");
-  };
-
-  const handleDelete = toBeDeletedGoal => {
-    const goalsAfterDeletion = goals.filter(goal => goal !== toBeDeletedGoal);
-    setGoal(goalsAfterDeletion);
-  };
-
+const GoalInput = ({ newGoal, onChangeText, onPress }) => {
   return (
     <React.Fragment>
       <View style={styles.container}>
         <TextInput
           style={styles.textInput}
           placeholder="Course goals"
-          onChangeText={handleInputText}
+          onChangeText={onChangeText}
           value={newGoal}
         />
-        <Button title="Press" onPress={handleAddGoal} />
+        <Button title="Add" onPress={onPress} />
       </View>
-
-      <GoalItem data={goals} onDelete={handleDelete} />
     </React.Fragment>
   );
 };
