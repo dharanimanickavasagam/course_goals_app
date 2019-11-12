@@ -37,12 +37,13 @@ export default function App() {
         visible={modalVisible}
         style={styles.modal}
       >
-        <GoalInput
-          onChangeText={handleInputText}
-          newGoal={newGoal}
-          onPress={handleAddGoal}
-        />
-        <View>
+        <View style={styles.addGoalContainer}>
+          <GoalInput
+            onChangeText={handleInputText}
+            newGoal={newGoal}
+            onPress={handleAddGoal}
+          />
+
           <Button title="Close" onPress={toggleModal} />
         </View>
       </Modal>
@@ -61,5 +62,10 @@ const styles = StyleSheet.create({
   modal: {
     display: "flex",
     flexDirection: "column"
+  },
+  addGoalContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
   }
 });
